@@ -20,20 +20,20 @@ body {
   .nav-wrapper {
     @apply fixed top-6 left-1/2 z-50;
     transform: translateX(-50%);
-    width: 90%;
-    max-width: 56rem;
+    width: min(90%, 48rem); /* Reduced from 56rem to 48rem */
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .nav-wrapper.nav-collapsed {
     @apply top-4;
-    max-width: 3.5rem;
+    width: min(90%, 3.5rem);
+    position: fixed;
   }
 
   .nav-content {
-    @apply bg-black/80 backdrop-blur-md border border-primary rounded-full px-6 py-3 flex items-center justify-between;
+    @apply bg-black/80 backdrop-blur-md border border-primary/20 rounded-full px-5 py-2.5 flex items-center justify-between;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 0 30px rgba(143, 1, 1, 0.3), inset 0 0 20px rgba(143, 1, 1, 0.2);
+    box-shadow: 0 0 30px rgba(143, 1, 1, 0.15), inset 0 0 20px rgba(143, 1, 1, 0.1);
   }
 
   .nav-collapsed .nav-content {
@@ -46,8 +46,8 @@ body {
   }
 
   .nav-content:hover {
-    @apply border-primary/80;
-    box-shadow: 0 0 40px rgba(143, 1, 1, 0.4), inset 0 0 30px rgba(143, 1, 1, 0.3);
+    @apply border-primary/40;
+    box-shadow: 0 0 40px rgba(143, 1, 1, 0.2), inset 0 0 30px rgba(143, 1, 1, 0.15);
   }
 
   .nav-scrolled {
@@ -58,12 +58,88 @@ body {
     transform: translate(-50%, -150%);
   }
 
+  .enhanced-grid-pattern {
+    @apply absolute inset-0;
+    background-image: linear-gradient(to right, rgba(143, 1, 1, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(143, 1, 1, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+    transform: perspective(1000px) rotateX(60deg) scale(2.5);
+    transform-origin: center center;
+    animation: grid-float 20s linear infinite;
+  }
+
+  .enhanced-gradient {
+    background: radial-gradient(circle at 20% 20%, rgba(143, 1, 1, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(143, 1, 1, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(143, 1, 1, 0.1) 0%, transparent 50%);
+    filter: blur(40px);
+    opacity: 0.8;
+  }
+
+  .vignette {
+    background: radial-gradient(circle at center, transparent 0%, transparent 50%, rgba(0, 0, 0, 0.4) 100%);
+  }
+
+  @keyframes grid-float {
+    0% {
+      transform: perspective(1000px) rotateX(60deg) scale(2.5) translateY(0);
+    }
+    100% {
+      transform: perspective(1000px) rotateX(60deg) scale(2.5) translateY(-40px);
+    }
+  }
+
   .grid-pattern {
-    background-image: radial-gradient(circle at center, rgba(143, 1, 1, 0.15) 0%, transparent 70%),
-      linear-gradient(rgba(143, 1, 1, 0.1) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(143, 1, 1, 0.1) 1px, transparent 1px);
-    background-size: 100% 100%, 20px 20px, 20px 20px;
-    background-position: 0 0, 0 0, 0 0;
+    background-image: linear-gradient(90deg, rgba(143, 1, 1, 0.07) 1px, transparent 1px),
+      linear-gradient(rgba(143, 1, 1, 0.07) 1px, transparent 1px);
+    background-size: 40px 40px;
+    transform-origin: top;
+    animation: grid-move 20s linear infinite;
+  }
+
+  .radial-gradient-top {
+    background: radial-gradient(circle at 50% 0%, rgba(143, 1, 1, 0.15) 0%, transparent 50%);
+  }
+
+  .radial-gradient-bottom {
+    background: radial-gradient(circle at 50% 100%, rgba(143, 1, 1, 0.1) 0%, transparent 50%);
+  }
+
+  .vignette-gradient {
+    background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
+  }
+
+  .noise-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.15;
+    mix-blend-mode: overlay;
+  }
+
+  @keyframes grid-move {
+    0% {
+      transform: rotateX(65deg) translateY(0%);
+    }
+    100% {
+      transform: rotateX(65deg) translateY(40px);
+    }
+  }
+
+  .enhanced-grid {
+    @apply absolute inset-0 perspective-[1000px] rotate-x-65;
+    background: linear-gradient(to bottom right, rgba(143, 1, 1, 0.1) 1px, transparent 1px),
+      linear-gradient(to top right, rgba(143, 1, 1, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-position: 0 0;
+    transform-origin: center center;
+  }
+
+  .grid-fade-left {
+    background: linear-gradient(to right, #000 0%, transparent 100%);
+  }
+
+  .grid-fade-right {
+    background: linear-gradient(to left, #000 0%, transparent 100%);
   }
 
   .cta-button {
@@ -87,8 +163,13 @@ body {
   }
 
   .event-card {
-    @apply bg-white/5 rounded-2xl p-6 backdrop-blur-sm border border-primary/10 
+    @apply bg-black/40 rounded-xl p-6 backdrop-blur-sm border border-primary/10 
            transition-all duration-300 hover:border-primary/20;
+    box-shadow: 0 0 30px rgba(143, 1, 1, 0.1);
+  }
+
+  .event-card:hover {
+    box-shadow: 0 0 40px rgba(143, 1, 1, 0.2);
   }
 
   .event-date {
@@ -97,7 +178,42 @@ body {
   }
 
   .event-timeline {
-    @apply absolute left-[27px] top-0 bottom-0 w-px bg-primary/20;
+    @apply absolute left-7 top-0 bottom-0 w-px bg-primary/20;
+  }
+
+  .particles-container {
+    @apply fixed inset-0 pointer-events-none;
+  }
+
+  .red-glow {
+    box-shadow: 0 0 40px rgba(143, 1, 1, 0.3), 0 0 80px rgba(143, 1, 1, 0.1), inset 0 0 20px rgba(143, 1, 1, 0.2);
+  }
+
+  .gradient-bg {
+    background: radial-gradient(circle at top right, rgba(143, 1, 1, 0.2), transparent 60%),
+      radial-gradient(circle at bottom left, rgba(143, 1, 1, 0.15), transparent 60%),
+      radial-gradient(circle at center, rgba(143, 1, 1, 0.1), transparent 50%);
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-400px * 3 - 1.5rem * 3)); /* Adjust based on image width and gap */
+    }
+  }
+
+  .animate-scroll {
+    animation: scroll 25s linear infinite;
+  }
+
+  .animate-scroll:hover {
+    animation-play-state: paused;
+  }
+
+  .hover\:pause:hover {
+    animation-play-state: paused;
   }
 }
 

@@ -15,7 +15,7 @@ const events = [
     location: "Game In Cage",
     hosts: ["Sarnavo saha Sardar", "Tamaghna Choudhuri"],
     attendees: 20,
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-kQbrV584PiibN1PEzK4oGAhmQL2pRR.png",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-3yZXD1oO7PAUoae5FB5a8UWANigDlV.png",
     status: "upcoming",
   },
   {
@@ -27,7 +27,7 @@ const events = [
     location: "BattleGround Gaming",
     hosts: ["Sarnavo saha Sardar", "Bartick Maiti"],
     attendees: 24,
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-kQbrV584PiibN1PEzK4oGAhmQL2pRR.png",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-3yZXD1oO7PAUoae5FB5a8UWANigDlV.png",
     status: "upcoming",
   },
   {
@@ -39,7 +39,7 @@ const events = [
     location: "GamersHub Arena",
     hosts: ["Rahul Sharma", "Priya Patel"],
     attendees: 45,
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-kQbrV584PiibN1PEzK4oGAhmQL2pRR.png",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-3yZXD1oO7PAUoae5FB5a8UWANigDlV.png",
     status: "upcoming",
   },
   {
@@ -51,7 +51,7 @@ const events = [
     location: "Digital Sports Complex",
     hosts: ["Amit Kumar", "Neha Singh"],
     attendees: 60,
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-kQbrV584PiibN1PEzK4oGAhmQL2pRR.png",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-3yZXD1oO7PAUoae5FB5a8UWANigDlV.png",
     status: "upcoming",
   },
   {
@@ -63,7 +63,7 @@ const events = [
     location: "Tech Park Gaming Zone",
     hosts: ["Karthik R", "Ananya M"],
     attendees: 35,
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-kQbrV584PiibN1PEzK4oGAhmQL2pRR.png",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-3yZXD1oO7PAUoae5FB5a8UWANigDlV.png",
     status: "upcoming",
   },
   {
@@ -75,7 +75,7 @@ const events = [
     location: "Cyber Gaming Hub",
     hosts: ["Vikram Shah", "Meera Kapoor"],
     attendees: 30,
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-kQbrV584PiibN1PEzK4oGAhmQL2pRR.png",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-3yZXD1oO7PAUoae5FB5a8UWANigDlV.png",
     status: "past",
   },
   {
@@ -87,7 +87,7 @@ const events = [
     location: "Digital Arena",
     hosts: ["Rajesh Kumar", "Sneha Gupta"],
     attendees: 50,
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-kQbrV584PiibN1PEzK4oGAhmQL2pRR.png",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-3yZXD1oO7PAUoae5FB5a8UWANigDlV.png",
     status: "past",
   },
 ]
@@ -101,7 +101,7 @@ export function EventsList() {
     <div className="space-y-8">
       <div className="flex items-center justify-between mb-12">
         <h1 className="text-4xl md:text-5xl font-display tracking-tight">Events</h1>
-        <div className="bg-white/5 rounded-full p-1 backdrop-blur-sm">
+        <div className="bg-black/40 rounded-full p-1 backdrop-blur-sm border border-primary/10">
           {["upcoming", "past"].map((tab) => (
             <button
               key={tab}
@@ -132,8 +132,12 @@ export function EventsList() {
               <div className="event-card flex-1">
                 <div className="flex gap-6 items-start">
                   <div className="flex-1">
-                    <span className="text-white/60 text-sm">{event.time}</span>
-                    <h3 className="text-xl font-medium mt-1 mb-3">{event.title}</h3>
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="text-primary text-sm font-medium">{event.time}</span>
+                      <span className="text-white/40 text-sm">•</span>
+                      <span className="text-white/60 text-sm">{event.day}</span>
+                    </div>
+                    <h3 className="text-xl font-medium mb-3">{event.title}</h3>
                     <div className="flex items-center gap-4 text-sm text-white/60">
                       <div className="flex items-center gap-1">
                         <MapPin className="w-4 h-4" />
@@ -145,7 +149,7 @@ export function EventsList() {
                       </div>
                     </div>
                   </div>
-                  <div className="relative w-24 h-24 rounded-xl overflow-hidden flex-shrink-0">
+                  <div className="relative w-32 h-32 rounded-xl overflow-hidden flex-shrink-0">
                     <Image src={event.image || "/placeholder.svg"} alt={event.title} fill className="object-cover" />
                   </div>
                 </div>
