@@ -1,8 +1,8 @@
 "use client"
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { BrandLogo } from './brand-logo';
-import React from 'react';
+import type { CSSProperties } from 'react';
 
 const FLAGS = [
   "🇺🇸", "🇬🇧", "🇯🇵", "🇨🇳", "🇮🇳", "🇩🇪", "🇫🇷", "🇮🇹", "🇨🇦", "🇦🇺", "🇧🇷", "🇷🇺"
@@ -47,7 +47,7 @@ export function OrbitalFlags() {
                   translateX(250px)
                   rotate(${-(360 * index) / FLAGS.length}deg)
                 `
-              } as React.CSSProperties}
+              } as CSSProperties}
             >
               <div className="relative">
                 <div className="absolute inset-[-8px] rounded-full bg-black/20 backdrop-blur-sm border border-red-500/30 shadow-[0_0_15px_rgba(143,1,1,0.3)] transition-all duration-300 group-hover:shadow-[0_0_25px_rgba(143,1,1,0.5)]" />
@@ -63,3 +63,6 @@ export function OrbitalFlags() {
     </div>
   );
 }
+
+// Also export as default
+export default OrbitalFlags;
