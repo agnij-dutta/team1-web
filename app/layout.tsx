@@ -1,6 +1,10 @@
 import { Space_Grotesk } from "next/font/google"
 import "./globals.css"
-import type React from "react" // Import React
+import type React from "react"
+
+export const metadata = {
+  generator: 'v0.dev'
+};
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -18,11 +22,3 @@ export default function RootLayout({
     </html>
   )
 }
-
-
-
-import './globals.css'
-
-export const metadata = {
-      generator: 'v0.dev'
-    };
