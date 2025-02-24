@@ -44,24 +44,28 @@ export function NavBar() {
   return (
     <div className={cn("nav-wrapper", hidden && "nav-hidden", scrolled && "nav-collapsed")}>
       <nav className={cn("nav-content", scrolled && "nav-scrolled")}>
-        <div className="flex items-center gap-8">
+        <div className="flex items-center gap-6">
           <Link href="/" className="flex items-center">
-            <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-RYjzSh2t3iZzYQO5flxcl0EuFGguBA.png"
-              alt="Logo"
-              width={32}
-              height={32}
-              className="transition-transform hover:scale-105"
-            />
+            <div className="relative">
+              <div className="absolute -inset-1 bg-red-500/20 blur"></div>
+              <Image
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-RYjzSh2t3iZzYQO5flxcl0EuFGguBA.png"
+                alt="Logo"
+                width={32}
+                height={32}
+                className="relative transform hover:scale-110 transition-all duration-300"
+              />
+            </div>
           </Link>
-          <div className="nav-links hidden md:flex items-center gap-6">
+          <div className="nav-links hidden md:flex items-center gap-5">
             {routes.map((route) => (
               <Link
                 key={route.path}
                 href={route.path}
-                className="text-base font-medium text-white hover:text-white/80 transition-colors tracking-wider"
+                className="text-base font-display text-white/90 hover:text-white transition-all tracking-wide hover:tracking-wider relative group"
               >
-                {route.name}
+                <span className="relative z-10">{route.name}</span>
+                <span className="absolute inset-x-0 -bottom-1 h-px bg-gradient-to-r from-red-500/0 via-red-500/70 to-red-500/0 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
               </Link>
             ))}
           </div>
@@ -69,7 +73,11 @@ export function NavBar() {
 
         <Sheet>
           <SheetTrigger asChild>
-            <Button variant="ghost" size="icon" className="nav-mobile md:hidden">
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="nav-mobile md:hidden hover:bg-red-500/10"
+            >
               <Menu className="h-5 w-5" />
             </Button>
           </SheetTrigger>
@@ -79,7 +87,7 @@ export function NavBar() {
                 <Link
                   key={route.path}
                   href={route.path}
-                  className="text-lg font-medium text-white/80 hover:text-white transition-colors tracking-wide"
+                  className="text-lg font-display text-white/80 hover:text-red-400 transition-colors tracking-wide"
                 >
                   {route.name}
                 </Link>
