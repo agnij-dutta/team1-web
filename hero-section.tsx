@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { OrbitalFlags } from "./orbital-flags"
+import { OrbitalFlags } from "@/components/orbital-flags"
 import { SparkParticles } from "./spark-particles"
 
 export function HeroSection() {
