@@ -100,7 +100,6 @@ export function EventsList() {
   return (
     <div className="space-y-8">
       <div className="flex items-center justify-between mb-12">
-        <h1 className="text-4xl md:text-5xl font-display tracking-tight">Events</h1>
         <div className="bg-black/40 rounded-full p-1 backdrop-blur-sm border border-primary/10">
           {["upcoming", "past"].map((tab) => (
             <button

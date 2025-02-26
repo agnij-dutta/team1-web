@@ -23,7 +23,9 @@ export function CommunitySection() {
     <section className="w-full py-24 bg-black/50 relative overflow-hidden">
       <div className="absolute inset-0 grid-pattern opacity-30" />
       <div className="max-w-5xl mx-auto px-6 mb-16 text-center relative z-10">
-        <h2 className="text-5xl font-display tracking-tight mb-6">Our Community</h2>
+        <h2 className="text-5xl font-display tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-red-500 via-red-600 to-red-700">
+          Our Community
+        </h2>
         <p className="text-white/60 text-xl max-w-2xl mx-auto">
           Join a vibrant ecosystem of developers, creators, and innovators building the future of Web3.
         </p>
